@@ -86,8 +86,8 @@ func DefaultHTTPSolverConfig() HTTPSolverConfig {
 	return HTTPSolverConfig{
 		Client:      http.Client{},
 		SolveConfig: DefaultSolveConfig(),
-		// there is a min delay of 3.5s in the javascript, but it's not enforced server-side for some reason
-		// if it ever is, here is the delay
-		Delay: 0,
+		// this minimum delay is present in the Javascript but not enforced by the server
+		// it's probably a silent flag which will get you monitored if you ignore it
+		Delay: 3500 * time.Millisecond,
 	}
 }
